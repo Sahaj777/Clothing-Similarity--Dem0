@@ -16,7 +16,7 @@ def get_data():
     input_brand = data['brand_name']
 
     url = "https://www.ajio.com/men-jeans/c/830216001?query=%3Arelevance&gridColumns=5"
-    path = '/media/gsa/Data/Work_Space/interview_task/chromedriver_linux64/chromedriver'
+    path = '/media/gsa/Data/Work_Space/Clothing Similarity/Clothing-Similarity--Dem0/chromedriver_linux64/chromedriver'
     driver = webdriver.Chrome(path)
 
     driver.get(url)
