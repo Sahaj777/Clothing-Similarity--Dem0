@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+import time
 
 from flask import Flask,request
 
@@ -14,12 +15,15 @@ def get_data():
     input_product = data['product_name']
     
     input_brand = data['brand_name']
-
-    url = "https://www.ajio.com/men-jeans/c/830216001?query=%3Arelevance&gridColumns=5"
+    
     path = '/media/gsa/Data/Work_Space/Clothing Similarity/Clothing-Similarity--Dem0/chromedriver_linux64/chromedriver'
     driver = webdriver.Chrome(path)
+    url = "https://www.ajio.com/men-jeans/c/830216001?query=%3Arelevance&gridColumns=5"
+   
 
     driver.get(url)
+    time.sleep(10)
+
 
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
