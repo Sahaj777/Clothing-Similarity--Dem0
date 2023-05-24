@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
-import time
+from selenium.webdriver.chrome.options import Options
 
 from flask import Flask,request
 
@@ -16,14 +16,31 @@ def get_data():
     
     input_brand = data['brand_name']
     
-    path = '/media/gsa/Data/Work_Space/Clothing Similarity/Clothing-Similarity--Dem0/chromedriver_linux64/chromedriver'
-    driver = webdriver.Chrome(path)
-    time.sleep(50)
+    chrome_options = Options()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--force-dark-mode")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-infobars")
+
+    print('options defined')
+    capabilities = {
+        # "resolution": "2560X1440"
+        # "resolution": "1280X720"
+        "resolution": "768X432"
+    }
+
+    driver = webdriver.Chrome(executable_path="/opt/render/project/.render/chrome/opt/google/chrome/google-chrome/chromedriver",
+                               desired_capabilities=capabilities,options=chrome_options)
+    
     url = "https://www.ajio.com/men-jeans/c/830216001?query=%3Arelevance&gridColumns=5"
    
 
     driver.get(url)
-    time.sleep(50)
+   
 
 
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
