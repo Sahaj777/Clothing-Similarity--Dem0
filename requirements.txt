@@ -1,3 +1,4 @@
 selenium
 Flask
 bs4
+gunicorn
