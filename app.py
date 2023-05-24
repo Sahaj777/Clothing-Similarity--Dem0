@@ -18,6 +18,7 @@ def get_data():
     
     path = '/media/gsa/Data/Work_Space/Clothing Similarity/Clothing-Similarity--Dem0/chromedriver_linux64/chromedriver'
     driver = webdriver.Chrome(path)
+    time.sleep(10)
     url = "https://www.ajio.com/men-jeans/c/830216001?query=%3Arelevance&gridColumns=5"
    
 
