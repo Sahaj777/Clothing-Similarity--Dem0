@@ -1,10 +1,16 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from flask_ngrok import run_with_ngrok
 
 from flask import Flask,request
 
 
 app = Flask(__name__)
+run_with_ngrok(app)   
+
 
 @app.route("/",methods=['POST'])
 def get_data():
@@ -97,7 +103,4 @@ def get_data():
 
 
 if __name__ == "__main__":
-    app.run()
-
-
-
+    app.run(port=4040)
